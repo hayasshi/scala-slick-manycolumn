@@ -14,10 +14,12 @@ lazy val root = (project in file(".")).settings(
   ),
   scalacOptions := Seq("-deprecation", "-language:postfixOps"),
   libraryDependencies ++= Seq(
+    "org.slf4j" % "slf4j-nop" % "1.6.4",
     "com.typesafe.slick" %% "slick" % "2.1.0",
     "com.h2database" % "h2" % "1.4.180",
-    "org.slf4j" % "slf4j-nop" % "1.6.4",
-    "org.specs2" %% "specs2" % "2.3.13" % "test"
+    "org.scalatest" %% "scalatest" % "2.2.1" % "test",
+    "com.chuusai" %% "shapeless" % "2.1.0"
   ),
-  javacOptions in compile ++= Seq("-target", "7", "-source", "7", "-encoding", "UTF-8")
+  javacOptions in compile ++= Seq("-target", "7", "-source", "7", "-encoding", "UTF-8"),
+  parallelExecution in Test := false
 )
